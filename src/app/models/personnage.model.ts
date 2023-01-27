@@ -1,0 +1,1 @@
+export interface personnage{name:string, id:number, type:string};

@@ -1,0 +1,23 @@
+<ul>
+    <li *ngFor="let p of pers; let i = index" 
+    [ngClass]="{'list-group-item': true,
+                'list-group-item-success': p.type == 'gentil',
+                'list-group-item-danger': p.type == 'mechant'} ">
+      <h2> {{ p.name | uppercase }} détails </h2>
+      <p> 
+        id : {{ p.id }} 
+        <br>
+        name : <input type="text" class="form-control" [(ngModel)]="p.name"> 
+        <a [routerLink]="p.id">Détail</a>
+  
+        <button class="btn btn-sm btn-danger"          
+                *ngIf="p.type === 'gentil'"          
+                (click)="onSwitchMechant(i)">Méchant</button>
+  
+        <button class="btn btn-sm btn-success"          
+                *ngIf="p.type === 'mechant'"          
+                (click)="onSwitchGentil(i)">Gentil</button>
+      </p>
+    </li>
+  </ul>
+  
